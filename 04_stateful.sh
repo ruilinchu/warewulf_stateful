@@ -7,5 +7,3 @@ wwvnfs --chroot /var/chroots/centos-6-stateful
 ./ww-configure-stateful.sh c002 500 sda
 ./ww-configure-stateful.sh c003 500 sda
 ./ww-configure-stateful.sh c004 500 sda
-
-
