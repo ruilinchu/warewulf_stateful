@@ -2,7 +2,7 @@
 
 ##install list on provision node
 ##yum -y groupinstall "Development tools"
-yum -y update
+##yum -y update
 yum -y groupinstall "MySQL Database server"
 yum -y install httpd dhcp tftp-server mod_perl tcpdump nfs-utils ntp man finger tcl gcc rsync bc wget
 ##yum -y install wget unzip emacs git
