@@ -19,18 +19,6 @@ echo warewulf making chroot ...
 #centos-6 is a template provided by warewulf in /usr/libexec/warewulf/wwmkchroot/
 wwmkchroot centos-6 /var/chroots/centos-6-stateful
 
-## install nptd to comupte nodes to sync time with master
-yum --tolerant --installroot /var/chroots/centos-6-stateful -y install ntp warewulf-monitor-legacy-wulfd
-
-sed -i '/centos.pool.ntp.org/c\server 172.16.2.250' /var/chroots/centos-6-stateful/etc/ntp.conf
-
-chroot /var/chroots/centos-6-stateful/ chkconfig ntpd on
-
-sed -i '/WAREWULF_MASTER/c\WAREWULF_MASTER=172.16.2.250' /var/chroots/centos-6-stateful/etc/sysconfig/wulfd.conf
-
-HOSTLIST=`grep eth0 /etc/hosts | awk '{print $3}' | paste -d, -s`
-sed -i "/WAREWULFD_HOSTS/c\WAREWULFD_HOSTS=$HOSTLIST " /etc/sysconfig/wwproxy.conf
-
 #echo warewulf initiating ...
 #CHROOTDIR=/var/chroots/centos-6 wwinit ALL
 wwvnfs --chroot /var/chroots/centos-6-stateful
