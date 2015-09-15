@@ -38,7 +38,7 @@ wwsh << EOF
 object modify -s bootlocal=UNDEF $NODE
 object modify -s bootloader=$DISK $NODE
 object modify -s diskpartition=$DISK $NODE
-object modify -s diskformat=$BOOTP,$SWAPP,$ROOTP $NODE
+object modify -s diskformat=$BOOTP,$ROOTP $NODE
 object modify -s FILESYSTEMS="mountpoint=/boot:dev=$BOOTP:type=ext4:size=500,dev=$SWAPP:type=swap:size=$SWAPSIZE,mountpoint=/:type=ext4:dev=$ROOTP:size=fill" $NODE
 EOF
 
