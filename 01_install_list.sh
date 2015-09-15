@@ -2,6 +2,7 @@
 
 ##install list on provision node
 ##yum -y groupinstall "Development tools"
+yum -y update
 yum -y groupinstall "MySQL Database server"
 yum -y install httpd dhcp tftp-server mod_perl tcpdump nfs-utils ntp man finger tcl gcc rsync bc wget
 ##yum -y install wget unzip emacs git
@@ -26,8 +27,8 @@ sed -i "267idelete @ENV{'PATH', 'IFS', 'CDPATH', 'ENV', 'BASH_ENV'};" /usr/bin/w
 sed -i "21idelete @ENV{'PATH', 'IFS', 'CDPATH', 'ENV', 'BASH_ENV'};" /usr/bin/wwbootstrap
 
 ## edit /etc/warewulf/vnfs.conf, uncomment hybridpath= ...
-echo turnning on hybridpath in /etc/warewulf/vnfs.conf ...
-sed -i '/# hybridpath /s/^#//g'  /etc/warewulf/vnfs.conf
+#echo turnning on hybridpath in /etc/warewulf/vnfs.conf ...
+#sed -i '/# hybridpath /s/^#//g'  /etc/warewulf/vnfs.conf
 
 chkconfig iptables off
 
