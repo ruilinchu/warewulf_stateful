@@ -10,3 +10,5 @@ wwvnfs -y --chroot /var/chroots/centos-6-stateful
 
 ./ww-configure-stateful.sh c[001-004] 500 sda
 
+## this will statefully provision the nodes
+./reboot_all
