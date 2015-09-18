@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yum --tolerant --installroot /var/chroots/centos-6-stateful -y install kernel grub
+yum --tolerant --installroot /var/chroots/centos-6-stateful -y install kernel grub yum
 
 cp -f /etc/passwd  /var/chroots/centos-6-stateful/etc
 cp -f /etc/group  /var/chroots/centos-6-stateful/etc
