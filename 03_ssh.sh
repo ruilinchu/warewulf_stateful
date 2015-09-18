@@ -19,3 +19,15 @@ sed -i '/WAREWULF_MASTER/c\WAREWULF_MASTER=172.16.2.250' /var/chroots/centos-6-s
 HOSTLIST=`grep eth0 /etc/hosts | awk '{print $3}' | paste -d, -s`
 sed -i "/WAREWULFD_HOSTS/c\WAREWULFD_HOSTS=$HOSTLIST " /etc/sysconfig/wwproxy.conf
 
+cat > /etc/profile.d/pdsh.sh <<EOF
+EOF
+# setup pdsh for cluster users
+export PDSH_RCMD_TYPE='ssh'
+export WCOLL='/etc/pdsh/machines'
+EOF
+
+mkdir -p /etc/pdsh
+grep eth0 /etc/hosts | awk '{print $3}' > /etc/pdsh/machines 
+exec -l $SHELL
+EOF
+
