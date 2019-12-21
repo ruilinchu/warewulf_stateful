@@ -1,12 +1,21 @@
 #!/bin/bash
 
 # set -e
-(
+case $1 in
+   start)
+     (
      flock -n 9 || exit 1
      touch /var/run/nodedone_pid
      (tail -f /var/log/messages & echo $! >&3 ) 3>/var/run/nodedone_pid | \
-     awk '/wwlogger: Running provision script: mkbootable/ { system("wwsh -y provision set " $4 " --bootlocal=exit")}' &> /dev/null &
+     awk '/wwlogger: Running provision script: mkbootable/ { system("/bin/wwsh -y provision set " $4 " --bootlocal=exit")}' &> /dev/null &
 
      echo $(</var/run/nodedone_pid)
 
-) 9>/var/lock/nodedone
+     ) 9>/var/lock/nodedone
+     ;;
+   stop)
+     kill  $(</var/run/nodedone_pid)
+     rm -fr /var/run/nodedone_pid
+     rm -fr /var/lock/nodedone
+     ;;
+esac
