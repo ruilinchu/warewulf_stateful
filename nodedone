@@ -18,4 +18,8 @@ case $1 in
      rm -f /var/run/nodedone_pid
      rm -f /var/lock/nodedone
      ;;
+   *)
+     echo "Usage: $0 {start|stop}"
+     exit 2
+     ;;
 esac
