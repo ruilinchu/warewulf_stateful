@@ -1,3 +1,12 @@
- #!/bin/sh
- 
- tail -f /var/log/message | awk '/wwlogger: Running provision script: mkbootable/ { system("wwsh -y provision set " $4 " --bootlocal=exit")}'
+#!/bin/bash
+
+# set -e
+(
+     flock -n 9 || exit 1
+     touch /var/run/nodedone_pid
+     (tail -f /var/log/messages & echo $! >&3 ) 3>/var/run/nodedone_pid | \
+     awk '/wwlogger: Running provision script: mkbootable/ { system("wwsh -y provision set " $4 " --bootlocal=exit")}' &> /dev/null &
+
+     echo $(</var/run/nodedone_pid)
+
+) 9>/var/lock/mylockfile
