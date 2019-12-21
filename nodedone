@@ -15,7 +15,7 @@ case $1 in
      ;;
    stop)
      kill  $(</var/run/nodedone_pid)
-     rm -fr /var/run/nodedone_pid
-     rm -fr /var/lock/nodedone
+     rm -f /var/run/nodedone_pid
+     rm -f /var/lock/nodedone
      ;;
 esac
