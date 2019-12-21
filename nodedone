@@ -9,4 +9,4 @@
 
      echo $(</var/run/nodedone_pid)
 
-) 9>/var/lock/mylockfile
+) 9>/var/lock/nodedone
