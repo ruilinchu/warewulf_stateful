@@ -2,7 +2,7 @@
 
 # back up critical sys files & warewulf config/data to zfs
 
-#mysqldump warewulf > /backup/warwulf.sql
+mysqldump warewulf > /backup/warwulf.sql
 wwsh node print > /backup/ww_node
 wwsh provision print > /backup/ww_provision
 wwsh file print > /backup/ww_file
@@ -18,6 +18,10 @@ for dir in \
 /etc/ssh \
 /etc/security \
 /etc/pam.d \
+/etc/sudoers.d \
+/etc/modprobe.d \
+/etc/sysctl.conf \
+/etc/cron.d \
 /var/chroots \
 /srv/warewulf ; do
 
