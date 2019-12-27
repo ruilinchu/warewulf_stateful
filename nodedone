@@ -7,7 +7,7 @@ case $1 in
      flock -n 9 || exit 1
      touch /var/run/nodedone_pid
      (tail -f /var/log/messages & echo $! >&3 ) 3>/var/run/nodedone_pid | \
-     awk '/wwlogger/ && /vnfs/ && /stateful/ { system("/bin/wwsh -y provision set " $4 " --bootlocal=exit") }' &> /var/log/nodedone &
+     awk '/wwlogger/ && /vnfs/ && /stateful/ {system("/bin/wwsh -y provision set --bootlocal=exit " $4)}' &> /var/log/nodedone &
 
      echo $(</var/run/nodedone_pid)
 
