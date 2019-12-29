@@ -9,20 +9,12 @@ wwsh file print > /backup/ww_file
 wwsh ipmi print > /backup/ww_ipmi
 
 for dir in \
-/etc/sysconfig/network-scripts \
-/etc/hosts \
-/etc/warewulf \
-/etc/passwd \
-/etc/group \
-/etc/shadow \
-/etc/ssh \
-/etc/security \
-/etc/pam.d \
-/etc/sudoers.d \
-/etc/modprobe.d \
-/etc/sysctl.conf \
-/etc/cron.d \
+/etc \
 /var/chroots \
+/var/lib \
+/var/warewulf \
+/var/www \
+/var/spool \
 /srv/warewulf ; do
 
 rsync -arR $dir /backup/
